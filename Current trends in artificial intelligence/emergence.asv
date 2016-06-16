@@ -1,0 +1,33 @@
+for count = 1:1
+    disp(count);
+    N = 100;
+    k = 4;
+    kN = k * N;
+    
+    h = WattsStrogatz(N,k,1.0);
+    deg = degree(h);
+    
+    representations = simulation(h,N,k,10000);
+    
+    % check which 'agents' prefer which action
+    for i = 1:N
+        rep = representations(i,:);
+        index = findLargestIndex(rep);
+        deg(i) = index;
+    end
+    
+    % plot the circle figure
+    
+    % figure('Visible', 'off');
+    plot(h,'NodeCData',deg,'Layout','circle');
+    title('Watts-Strogatz Graph with $N = 100$ nodes, $K = 4$, and $\beta = 1.0$', ...
+        'Interpreter','latex');
+    print(strcat('CirclePlot',int2str(count)),'-dpng');
+    
+    % plot a histogram showing which actions are more common than the others
+    
+    % figure('Visible', 'off');
+    figure
+    histo = histogram(deg);
+    print(strcat('Histogram',int2str(count)),'-dpng');
+end
