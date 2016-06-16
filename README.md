@@ -1,5 +1,6 @@
 # CurrentTrendsInArtificialIntelligence
 TODO:
+
 ~~- Add new nodes in WattsStrogartz-graph~~
   - Repeat experiment with scale-free network
   - Change nodes in scale-free as well
