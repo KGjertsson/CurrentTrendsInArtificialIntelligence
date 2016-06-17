@@ -1,4 +1,4 @@
-function representations = simulation(h,N,k,iter)
+function representations = simulation(h,N,k,iter, height)
 kN = k * N;
 edges = h.Edges;
 representations = randi([0 10],N,k);
@@ -18,7 +18,7 @@ for i = 1:iter
     % We have now found the highest representation for each node, time to
     % 'play' the actions. Worth noting is that each representation is coded
     % as the different columns in the representation matrix.
-    for j = 1:kN
+    for j = 1:height
         currentEdge = edges(j,:);
         currentNode = currentEdge.EndNodes(1);
         currentNeighbour = currentEdge.EndNodes(2);
